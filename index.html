@@ -55,19 +55,27 @@
 
     @media only screen and (max-width: 600px) {
   .tables {
-    max-width: 110px;}
+    max-width: 110px;
+    max-height:30px}
 
     .inner {
       max-width: 110px;
       font-weight:400;
       font-size:0.8rem;
-      max-height:20px
+      max-height:18px;
+      border-radius:2px;
+      margin:5px 10px
     }
   
   #header {
     margin:5px;
     font-size:1.0rem
 
+  }
+
+  .bar {
+    max-height:22px;
+      border-radius:3px
   }
 }
   </style>
@@ -126,13 +134,13 @@
                 
               }}
             >
-              <div
+              <div className = "bar"
                 style={{
                   backgroundColor: "#66a3ff",
                   color: 'red',
                   width: (((item.population))/countriesTotal[0].population*100).toString() + "%",
-                  height: "40px",
-                  'borderRadius':'5px'
+                  height: "33px",
+                  'borderRadius':'4px'
                 }}
               ></div>
             </div>
@@ -204,12 +212,12 @@
                 flexShrink: "0",
               }}
             >
-              <div
+              <div className = "bar"
                 style={{
                   backgroundColor: "#df80ff",
                   color: "red",
                   width: ((item.count)/langObjectList[0].count*100).toString() + "%",
-                  height: "40px",
+                  height: "33px",
                   'borderRadius':'5px'
                 }}
               ></div>
