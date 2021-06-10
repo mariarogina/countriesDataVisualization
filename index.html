@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countries and Languages in Charts</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .block {
+      height: 50px;
+      margin: 5px;
+      display: flex;
+      color: rgb(77, 40, 112);
+      font-weight: 400;
+    }
+
+    .block>div {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .inner {
+      display: block;
+      margin: 10px 20px;
+      width: 210px;
+    }
+
+    img {
+      width: 50%;
+    }
+
+    .App-wrap {
+      font-size: 1.2rem;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="countries-object.js"></script>
+
+  <script type="text/babel">
+    // Тут я делаю список объектов стран с самым большим населением
+      console.log(countries);
+      let pop_list = [];
+      let arr = countries.map((item, index) => item.population);
+      console.log("Here is array" + arr);
+
+      while (pop_list.length < 10) {
+        var largest = Math.max.apply(Math, arr);
+        console.log(largest);
+        pop_list.unshift(largest);
+        arr = arr.filter((item) => item !== largest);
+      }
+
+      console.log("Here is pop list" + pop_list);
+
+      let countries_aggregator = [];
+      for (var i = 0; i < pop_list.length; i++) {
+        console.log("Here countries i" + i);
+
+        let countries_pop = countries.filter(
+          (country) => country.population === pop_list[i]
+        );
+        console.log("Here countries pop" + countries_pop);
+        countries_aggregator.unshift(countries_pop);
+      }
+      console.log("Here is AGG" + countries_aggregator);
+      var countriesTotal = countries_aggregator.flat();
+      const worldPop = { name: "World", population: 7693165599 };
+      countriesTotal.unshift(worldPop);
+      console.log(countriesTotal);
+
+      //Компонент графика стран
+
+      const BlockPopulation = (props) => {
+        let list = countriesTotal;
+
+        let newlist = list.map((item, index) => (
+          <div key={index + "listitem"} className="block">
+            <div className="inner">{item.name}</div>
+            <div
+              style={{
+                width: (7693165599 / 10000000).toString() + "px",
+                flexShrink: "0",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#66a3ff",
+                  color: 'red',
+                  width: (item.population / 10000000).toString() + "px",
+                  height: "40px",
+                  'borderRadius':'5px'
+                }}
+              ></div>
+            </div>
+            <div className="inner">{item.population}</div>
+          </div>
+        ));
+
+        return (
+          <div className="App" >
+            <h1 style={{'margin':'10px 30px'}}>Top 10 Most Populated Countries in the World</h1>
+            <div className="App-wrap" style={{'margin':'30px 0px'}}>{newlist}</div>
+          </div>
+        );
+      };
+
+      //Тут создание объекта с самыми частыми языками
+      let langList = countries.map((item) => {
+        return item.languages;
+      });
+      console.log(langList);
+
+      var langTotal = langList.flat();
+
+      console.log(langTotal);
+
+      let langObjectList = [];
+
+      for (var k = 0; k < 11; k++) {
+        let langObject = {name:'',count:''};
+        var mf = 1;
+        var m = 0;
+        var item;
+        for (var i = 0; i < langTotal.length; i++) {
+          for (var j = i; j < langTotal.length; j++) {
+            if (langTotal[i] == langTotal[j]) m++;
+            if (mf < m) {
+              mf = m;
+              item = langTotal[i];
+            }
+          }
+          m = 0;
+        }
+        console.log("Most frequent" + item + " ( " + mf + " times ) ");
+
+        console.log(item);
+        langObject.name = item;
+        langObject.count = mf;
+        langObjectList.push(langObject);
+        langTotal = langTotal.filter((val) => val !== item);
+        console.log(langTotal);
+        console.log(langObject);
+      }
+
+      console.log(langObjectList);
+
+      //Компонент графика языков
+
+      const BlockLanguages = (props) => {
+        let list = langObjectList;
+
+        let newlist2 = list.map((item, index) => (
+          <div key={index + "listitem" + "two"} className="block">
+            <div className="inner">
+              {item.name}
+            </div>
+            <div
+              style={{
+                width: (91*8.5).toString() + "px",
+                flexShrink: "0",
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: "#df80ff",
+                  color: "red",
+                  width: (item.count * 8.5).toString() + "px",
+                  height: "40px",
+                  'borderRadius':'5px'
+                }}
+              ></div>
+            </div>
+
+            <div className="inner">{item.count}</div>
+          </div>
+        ));
+
+        return (
+          <div className="App" >
+            
+            <h1 style={{'margin':'10px 30px'}}>Top 10 Most Frequent Languages in the World</h1>
+            <div className="App-wrap" style={{'margin':'30px 0px'}}>{newlist2}</div>
+          </div>
+        );
+      };
+
+      const Block = () => {
+        // "pop" | "lang" | null
+        const [pageElem, setPageElem] = React.useState("pop");
+
+        return (
+          <div className="App" style={{'margin':'40px 10px'}}>
+            
+            <div style={{textAlign: 'center'}} className="App-wrap">
+              <div>
+                <h1 style={{ margin: "0px 50px", 'color':'purple', 'fontWeight':'700'}}>World Statistics</h1>
+              
+                <button
+                  onClick={() => {
+                    setPageElem("pop");
+                  }}
+                  style={{ margin: "30px 50px", backgroundColor:"#66a3ff" }}
+                  className="btn btn-info"
+                >
+                  {" "}
+                  Show Population
+                </button>
+                <button
+
+                style={{ margin: "30px 50px", backgroundColor: "#df80ff" }}
+                  onClick={() => {
+                    setPageElem("lang");
+                  }}
+                  className="btn btn-info"
+                >
+                  Show Languages{" "}
+                </button>
+              </div>
+
+              {pageElem === "lang" ? (
+                <BlockLanguages className="container" />
+              ) : null}
+              {pageElem === "pop" ? (
+                <BlockPopulation className="container" />
+              ) : null}
+            </div>
+          </div>
+        );
+      };
+
+      const rootElement = document.getElementById("root");
+      ReactDOM.render(
+        <Block className="container" countries={countries} />,
+        rootElement
+      );
+    </script>
+</body>
+
+</html>
