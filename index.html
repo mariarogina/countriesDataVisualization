@@ -25,7 +25,9 @@
     .block>div {
       display: flex;
       flex-direction: row;
+      
     }
+
 
     .inner {
       display: block;
@@ -39,6 +41,9 @@
 
     .App-wrap {
       font-size: 1.2rem;
+      display:flex;
+      flex-direction:column;
+      flex-wrap:wrap
 
     }
   </style>
@@ -207,7 +212,7 @@
         return (
           <div className="App" style={{'margin':'40px 10px'}}>
             
-            <div style={{textAlign: 'center'}} className="App-wrap">
+            <div style={{textAlign: 'center'}} className="App-wrap-big">
               <div>
                 <h1 style={{ margin: "0px 50px", 'color':'purple', 'fontWeight':'700'}}>World Statistics</h1>
               
