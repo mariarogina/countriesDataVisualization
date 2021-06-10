@@ -41,6 +41,10 @@
       width: 50%;
     }
 
+    #header {
+      margin:30px 30px
+    }
+
     .App-wrap {
       font-size: 1.2rem;
       display:table-row-group;
@@ -59,6 +63,11 @@
       font-size:0.8rem;
     }
   
+  #header {
+    margin:5px;
+    font-size:1.3rem
+
+  }
 }
   </style>
 </head>
@@ -132,7 +141,7 @@
 
         return (
           <div className="App" >
-            <h1 style={{'margin':'30px 30px'}}>Top 10 Most Populated Countries in the World</h1>
+            <h1 id="header"  >Top 10 Most Populated Countries in the World</h1>
             <div className="App-wrap" style={{'margin':'30px 0px'}}>{newlist}</div>
           </div>
         );
@@ -212,7 +221,7 @@
         return (
           <div className="App" >
             
-            <h1 style={{'margin':'30px 30px'}}>Top 10 Most Frequent Languages in the World</h1>
+            <h1 id="header" >Top 10 Most Frequent Languages in the World</h1>
             <div className="App-wrap" style={{'margin':'30px 0px'}}>{newlist2}</div>
           </div>
         );
