@@ -86,8 +86,7 @@
       }
       console.log("Here is AGG" + countries_aggregator);
       var countriesTotal = countries_aggregator.flat();
-      const worldPop = { name: "World", population: 7693165599 };
-      countriesTotal.unshift(worldPop);
+      
       console.log(countriesTotal);
 
       //Компонент графика стран
@@ -100,7 +99,7 @@
             <div className="inner">{item.name}</div>
             <div
               style={{
-                width: (7693165599 / 15000000).toString() + "px",
+                width: (1377422166 / 3000000).toString() + "px",
                 flexShrink: "0",
               }}
             >
@@ -108,7 +107,7 @@
                 style={{
                   backgroundColor: "#66a3ff",
                   color: 'red',
-                  width: (item.population / 15000000).toString() + "px",
+                  width: (item.population / 3000000).toString() + "px",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
@@ -178,7 +177,7 @@
             </div>
             <div
               style={{
-                width: (91*6).toString() + "px",
+                width: (91*5.7).toString() + "px",
                 flexShrink: "0",
               }}
             >
@@ -186,7 +185,7 @@
                 style={{
                   backgroundColor: "#df80ff",
                   color: "red",
-                  width: (item.count * 6).toString() + "px",
+                  width: (item.count * 5.7).toString() + "px",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
