@@ -48,6 +48,18 @@
       flex-wrap:wrap
 
     }
+
+    @media only screen and (max-width: 600px) {
+  .tables {
+    max-width: 150px;}
+
+    .inner {
+      max-width: 150px;
+      font-weight:400;
+      font-size:0.8rem;
+    }
+  
+}
   </style>
 </head>
 
@@ -98,17 +110,17 @@
         let newlist = list.map((item, index) => (
           <div key={index + "listitem"} className="block">
             <div className="inner">{item.name}</div>
-            <div
+            <div className = "tables"
               style={{
-                width: (1377422166 / 3000000).toString() + "px",
-                flexShrink: "0",
+                width: '400px',
+                
               }}
             >
               <div
                 style={{
                   backgroundColor: "#66a3ff",
                   color: 'red',
-                  width: (item.population / 3000000).toString() + "px",
+                  width: (((item.population))/countriesTotal[0].population*100).toString() + "%",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
@@ -176,9 +188,9 @@
             <div className="inner">
               {item.name}
             </div>
-            <div
+            <div className = "tables"
               style={{
-                width: (91*5.7).toString() + "px",
+                width: "400px",
                 flexShrink: "0",
               }}
             >
@@ -186,7 +198,7 @@
                 style={{
                   backgroundColor: "#df80ff",
                   color: "red",
-                  width: (item.count * 5.7).toString() + "px",
+                  width: ((item.count)/langObjectList[0].count*100).toString() + "%",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
@@ -221,7 +233,7 @@
                   onClick={() => {
                     setPageElem("pop");
                   }}
-                  style={{ margin: "30px 20px", backgroundColor:"#66a3ff" }}
+                  style={{ margin: "20px 10px", backgroundColor:"#66a3ff" }}
                   className="btn btn-info"
                 >
                   {" "}
@@ -229,7 +241,7 @@
                 </button>
                 <button
 
-                style={{ margin: "30px 50px", backgroundColor: "#df80ff" }}
+                style={{ margin: "20px 10px", backgroundColor: "#df80ff" }}
                   onClick={() => {
                     setPageElem("lang");
                   }}
