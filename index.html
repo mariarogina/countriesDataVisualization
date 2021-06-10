@@ -41,7 +41,7 @@
 
     .App-wrap {
       font-size: 1.2rem;
-      display:flex;
+      display:table-row-group;
       flex-direction:column;
       flex-wrap:wrap
 
@@ -99,7 +99,7 @@
             <div className="inner">{item.name}</div>
             <div
               style={{
-                width: (7693165599 / 10000000).toString() + "px",
+                width: (7693165599 / 20000000).toString() + "px",
                 flexShrink: "0",
               }}
             >
@@ -107,7 +107,7 @@
                 style={{
                   backgroundColor: "#66a3ff",
                   color: 'red',
-                  width: (item.population / 10000000).toString() + "px",
+                  width: (item.population / 20000000).toString() + "px",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
@@ -119,7 +119,7 @@
 
         return (
           <div className="App" >
-            <h1 style={{'margin':'10px 30px'}}>Top 10 Most Populated Countries in the World</h1>
+            <h1 style={{'margin':'30px 30px'}}>Top 10 Most Populated Countries in the World</h1>
             <div className="App-wrap" style={{'margin':'30px 0px'}}>{newlist}</div>
           </div>
         );
@@ -177,7 +177,7 @@
             </div>
             <div
               style={{
-                width: (91*8.5).toString() + "px",
+                width: (91*6).toString() + "px",
                 flexShrink: "0",
               }}
             >
@@ -185,7 +185,7 @@
                 style={{
                   backgroundColor: "#df80ff",
                   color: "red",
-                  width: (item.count * 8.5).toString() + "px",
+                  width: (item.count * 6).toString() + "px",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
@@ -199,7 +199,7 @@
         return (
           <div className="App" >
             
-            <h1 style={{'margin':'10px 30px'}}>Top 10 Most Frequent Languages in the World</h1>
+            <h1 style={{'margin':'30px 30px'}}>Top 10 Most Frequent Languages in the World</h1>
             <div className="App-wrap" style={{'margin':'30px 0px'}}>{newlist2}</div>
           </div>
         );
