@@ -25,6 +25,7 @@
     .block>div {
       display: flex;
       flex-direction: row;
+      text-align:left
       
     }
 
@@ -32,7 +33,7 @@
     .inner {
       display: block;
       margin: 10px 20px;
-      width: 210px;
+      width: 150px;
     }
 
     img {
@@ -99,7 +100,7 @@
             <div className="inner">{item.name}</div>
             <div
               style={{
-                width: (7693165599 / 20000000).toString() + "px",
+                width: (7693165599 / 15000000).toString() + "px",
                 flexShrink: "0",
               }}
             >
@@ -107,7 +108,7 @@
                 style={{
                   backgroundColor: "#66a3ff",
                   color: 'red',
-                  width: (item.population / 20000000).toString() + "px",
+                  width: (item.population / 15000000).toString() + "px",
                   height: "40px",
                   'borderRadius':'5px'
                 }}
